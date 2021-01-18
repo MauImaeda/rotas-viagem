@@ -25,3 +25,6 @@
     2. Para realizar o cadastramento de uma nova rota
       Realizar uma chamada POST para o endereço `http://localhost:8080/api/adicionar-rota` informando no corpo da requisição 3 campos obrigatórios: "origem", "destino" e "custo"
       
+### Requisitos
+   [Node.js](https://nodejs.org/en/)
+      
