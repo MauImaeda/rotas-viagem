@@ -1,24 +1,33 @@
 
 const prompt = require('prompt');
+const readline = require("readline");
 const rotasAppService = require('../appServices/rotasAppServices');
 const rotaResultDto = require('../dtos/rotaResultDto');
-const { param } = require('../routes');
-var schema = {
-        properties: {
-          parametros: {
-            description: 'Please enter the route',
-          },
-        }
+const { EventEmitter } = require('events')
+const schema = {
+  properties: {
+    parametros: {
+      description: 'Please enter the route',
+    },
+  }
 }
-function inicializaPrompt(){
-  prompt.get(schema, function (err, result) {
-      const parametros = result.parametros.split('-');
-      const resultado = rotasAppService.calculaMelhorRota(parametros[0], parametros[1]);
-      console.log(rotaResultDto.criarRotaResultDto(resultado));
-      prompt.stop();
-  });
-  prompt.start();
-  return prompt;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+class Cli extends EventEmitter {
+  inicializaPrompt() {
+    rl.question('Por favor digite uma rota > ', (params) => {
+      const parametros = params.split('-');
+      if (parametros.length == 2) {
+        const resultado = rotasAppService.calculaMelhorRota(parametros[0], parametros[1]);
+        console.log(rotaResultDto.criarRotaResultDto(resultado));
+      } else {
+        console.log('Parâmetros origem e destino são obrigatórios')
+      }
+      this.inicializaPrompt();
+    });
+  }
 }
-module.exports = {inicializaPrompt
-};
+module.exports = Cli
