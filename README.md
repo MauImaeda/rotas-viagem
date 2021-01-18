@@ -1,23 +1,26 @@
 # rotas-viagem
 
 ### Primeiros passos
-  1. Instale as bibliotecas intilizadas no programa 
+  1. Instale as bibliotecas utilizadas no programa 
   `npm install` ou `yarn install`
   2. Executar a aplicação
   `node ./src/server.js <nome-do-arquivo.csv>`
   
 ### A aplicação
-  A aplicação ao ser executada permite ao usuário fazer dois tipos de utilização
+  A aplicação apresenta duas abordagens
   - Por meio do CLI
-    - O usuário pode realizar a consulta do melhor caminho do ponto A até ponto B
+    - O usuário pode realizar a consulta do melhor caminho do ponto A até o ponto B
   - Por meio da API
-    - O usuário pode realizar a consulta do melhor caminho do ponto A até ponto B
-    - O usuário pode cadastrar uma rota 
+    - O usuário pode realizar a consulta do melhor caminho do ponto A até o ponto B
+    - O usuário pode cadastrar uma rota nova
   
 ### Como usar
   - Modo CLI
-    Para utilizar a aplicação no modo CLI, basta informar a rota desejada no formato `origem-destino`
-    
+    Para utilizar a aplicação no modo CLI, basta informar a rota desejada no formato `origem-destino` no prompt de comando
+   ```
+    Por favor digite uma rota > GRU-CDG
+   ```
+   
   - Modo API
     Para utilizar a aplicação no modo API
     1. Para realizar a busca
