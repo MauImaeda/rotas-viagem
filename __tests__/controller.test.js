@@ -9,7 +9,7 @@ describe('Testando camada de controle', () => {
         mock.salvarNomeArquivo('teste.csv');
         it('TesteGetDeveRetornar200', async () => {
                 await request(app)
-                        .get('/api')
+                        .get('/api/buscar-rota')
                         .query({
                                 origem: "teste1",
                                 destino: "teste2"
@@ -20,7 +20,7 @@ describe('Testando camada de controle', () => {
         });
         it('TesteGetDeveRetornar404', async () => {
                 await request(app)
-                        .get('/api')
+                        .get('/api/buscar-rota')
                         .query({
                                 origem: "teste1",
                                 destino: "teste5"
@@ -31,7 +31,7 @@ describe('Testando camada de controle', () => {
         });
         it('TesteGetSemDestinoDeveRetornar400', async () => {
                 await request(app)
-                        .get('/api')
+                        .get('/api/buscar-rota')
                         .query({
                                 origem: "teste1",
                         })
@@ -41,7 +41,7 @@ describe('Testando camada de controle', () => {
         });
         it('TesteGetOrigemDestinoDeveRetornar400', async () => {
                 await request(app)
-                        .get('/api')
+                        .get('/api/buscar-rota')
                         .query({
                                 destino: "teste5"
                         })
@@ -98,6 +98,32 @@ describe('Testando camada de controle', () => {
                         });
                 
         });
+        it('TestePostCustoNaoNumerakDeveRetornar400', async () => {
+                await request(app)
+                        .post('/api/adicionar-rota')
+                        .send({
+                                origem: 'teste4',
+                                destino: "teste5",
+                                custo: 'teste'
+                        })
+                        .then((res) =>{
+                                expect(res.statusCode).toEqual(400)
+                        });
+                
+        });
+        it('TesteGetErroDeveRetornar500', async () => {
+                mock.limparRotas();
+                await request(app)
+                        .get('/api/buscar-rota')
+                        .query({
+                                origem: "teste1",
+                                destino: "teste2"
+                        })
+                        .then((res) =>{
+                                expect(res.statusCode).toEqual(500)
+                        })
+        });
+
         
 
 })

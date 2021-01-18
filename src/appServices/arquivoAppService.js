@@ -44,6 +44,7 @@ class ArquivoAppService extends EventEmitter {
       .writeRecords(rotas)
       .then(() =>{ 
       });
+    
   }
 }
 module.exports = ArquivoAppService;

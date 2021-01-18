@@ -12,5 +12,8 @@ class StorageMock{
         salvarNomeArquivo(nome){
                 storage.salvarNomeArquivo(nome);
         }
+        limparRotas(){
+                storage.limparRotas();
+        }
 }
 module.exports = StorageMock;

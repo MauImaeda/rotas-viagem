@@ -1,7 +1,7 @@
 const Grafo = require('../models/grafo');
 let graph = new Map();
 function convertModelToGrafo(model){
-        if(model){
+        if(model.length > 0){
                 let grafos = [];
                 model.forEach(x => {
                         let grafo = grafos.filter(y => y.no === x.origem)[0];
