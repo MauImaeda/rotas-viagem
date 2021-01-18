@@ -1,16 +1,8 @@
 
-const prompt = require('prompt');
 const readline = require("readline");
 const rotasAppService = require('../appServices/rotasAppServices');
 const rotaResultDto = require('../dtos/rotaResultDto');
 const { EventEmitter } = require('events')
-const schema = {
-  properties: {
-    parametros: {
-      description: 'Please enter the route',
-    },
-  }
-}
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
