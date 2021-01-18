@@ -5,6 +5,7 @@ GRU,SCL,20
 GRU,ORL,56
 ORL,CDG,5
 SCL,ORL,20
-teste,teste2,3
-teste,teste2,3
-teste,teste2,teste
+teste,teste2,2
+GRU,teste,2
+teste,CDG,2
+CDG,teste2,2

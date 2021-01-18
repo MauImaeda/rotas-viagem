@@ -123,6 +123,16 @@ describe('Testando camada de controle', () => {
                                 expect(res.statusCode).toEqual(500)
                         })
         });
+        it('TestePostErroJsonDeveRetornar400', async () => {
+                mock.limparRotas();
+                await request(app)
+                        .post('/api/adicionar-rota')
+                        .send('{"origem":}')
+                        .then((res) =>{
+                                expect(res.statusCode).toEqual(400)
+                        })
+        });
+
 
         
 
